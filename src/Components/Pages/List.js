@@ -105,7 +105,7 @@ class List extends Component {
         currentPage = page;
 
       } else if(type==="pokedex") {
-        message = "You cant beat Garry without pokemons! You should some catch"
+        message = "You cant beat Gary without pokemons! You should some catch"
         data = pokedex.length
           ? pokedex
               .slice((pokedexPage - 1) * limit, limit * pokedexPage)

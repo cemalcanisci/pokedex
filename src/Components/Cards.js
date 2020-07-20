@@ -11,6 +11,7 @@ export default class Cards extends Component {
       tooManyRequests: false,
     };
   }
+
   render() {
     const {
       name, url, catched, release,
@@ -19,6 +20,7 @@ export default class Cards extends Component {
     const index = url.split('/')[url.split('/').length - 2];
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
     const { imageLoading, tooManyRequests } = this.state;
+    
     return (
       <div className="col-md-3 col-sm-6 mb-5">
         <div className={`card shadow  rounded ${

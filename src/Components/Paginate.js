@@ -16,6 +16,7 @@ export default class Paginate extends Component {
         pageNumber: pre,
       };
     }
+
     return null;
   }
 
@@ -26,7 +27,6 @@ export default class Paginate extends Component {
     const { pageNumber } = this.state;
     return (
       <div className="mb-3 d-flex flex-column align-items-center justify-content-center">
-
         <ReactPaginate
           pageCount={Math.ceil(total / limit)}
           previousLabel="Prev"

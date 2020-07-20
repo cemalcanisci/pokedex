@@ -12,6 +12,7 @@ export const getPokemons = (page) => async (dispatch) => {
     dispatch({ type: 'GET_ERROR', payload: 'Something Wrong..' });
   }
 };
+
 export const getPokemon = (pokemonId) => async (dispatch) => {
   try {
     const pokemon = await axios.get(
@@ -22,6 +23,7 @@ export const getPokemon = (pokemonId) => async (dispatch) => {
     dispatch({ type: 'GET_ERROR', payload: 'Something Wrong..' });
   }
 };
+
 export const getSearchedPokemons = (type, key) => async (dispatch) => {
   if (key === '') {
     dispatch({ type: 'GET_ERROR', payload: 'Please write name which pokemon you want search!!' });
@@ -38,9 +40,11 @@ export const getSearchedPokemons = (type, key) => async (dispatch) => {
     dispatch({ type: 'GET_SEARCHED_POKEMONS', payload: { key, type } });
   }
 };
+
 export const catchPokemon = (pokemon) => (dispatch) => {
   dispatch({ type: 'CATCH_POKEMON', payload: pokemon });
 };
+
 export const releasePokemon = (name) => (dispatch) => {
   dispatch({ type: 'RELEASE_POKEMON', payload: name });
 };

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, NavLink ,useHistory} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Navbar, Nav,
@@ -8,22 +8,28 @@ import { getSearchedPokemons } from '../Redux/actions';
 
 function Header({ props, dispatch }) {
   const location = useLocation();
+  const history = useHistory();
   let textInput = null;
   const url = location.pathname.startsWith('/pokemon') ? '/' : location.pathname === '/pokedex' ? 'pokedex' : '/';
-
+  
   const search = () => (e) => {
     const type = location.pathname.startsWith('/pokemon') ? 'pokemons' : location.pathname === '/pokedex' ? 'pokedex' : 'pokemons';
     const searchString = textInput.value.replace(/\s/g, '');
     dispatch(getSearchedPokemons(type, searchString));
     textInput.value = '';
   };
+
   const keyPressHandler = (e) => {
     if (e.key === 'Enter') {
       const type = location.pathname.startsWith('/pokemon') ? 'pokemons' : location.pathname === '/pokedex' ? 'pokedex' : 'pokemons';
       const searchString = textInput.value.replace(/\s/g, '');
       dispatch(getSearchedPokemons(type, searchString));
+      history.push(`${url}?search`)
+      e.target.value='';
     }
+
   };
+
   useEffect(() => {
     window.addEventListener('keydown', keyPressHandler);
     return () => {
@@ -63,14 +69,12 @@ function Header({ props, dispatch }) {
             >
 
               Search
-
             </NavLink>
           </div>
         </div>
 
       </Navbar.Collapse>
     </Navbar>
-
   );
 }
 function mapStateToProps(state) {

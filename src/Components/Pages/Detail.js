@@ -14,6 +14,7 @@ class Detail extends Component {
       const id = pokeId;
       get(id);
     }
+    
   }
   catch = (pokemon) => (e) => {
     const { catchPokemon } = this.props;
@@ -26,10 +27,12 @@ class Detail extends Component {
     }
     catchPokemon(newPokeObject);
   };
+
   release = (name)=>(e)=>{
     const {releasePokemon} = this.props;
     releasePokemon(name);
   }
+
   render() {
     
     const { match ,error } = this.props;
@@ -59,6 +62,7 @@ class Detail extends Component {
           case ('special-defense'): specialDefense = stat.base_stat; break;
         }
       });
+
       evs = stats.filter((stat) => {
         if (stat.effort > 0) {
           return true;
@@ -69,15 +73,18 @@ class Detail extends Component {
   + s.substring(1))
         .join(' ')}`);
     }
+
     if (types && types.length) {
       types.forEach((type) => { pokeTypes.push(type.type.name); });
     }
+
     if (abilities && abilities.length) {
       abilities.forEach((ability) => {
         pokeAbilities.push(ability.ability.name.toLowerCase().split('-').map((s) => s.charAt(0).toUpperCase()
        + s.substring(1)).join(' '));
       });
     }
+
     const typeColors = {
       bug: 'B1C12E',
       dark: '4F3A2D',
@@ -98,8 +105,10 @@ class Detail extends Component {
       steel: 'B5B5C3',
       wwater: '3295F6',
     };
+
     const heightMeter = height / 10;
     const weightKg = weight / 10;
+
     return (
       <div className="col mt-3">
         {!error ? <div className="card">
@@ -261,7 +270,6 @@ class Detail extends Component {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
           <hr />
@@ -285,7 +293,6 @@ class Detail extends Component {
                         </h6>
                       </div>
                     </div>
-
                   </div>
                 </div>
                 <div className="row">
@@ -324,7 +331,6 @@ class Detail extends Component {
                         </h6>
                       </div>
                     </div>
-
                   </div>
                 </div>
                 <div className="row">
@@ -343,10 +349,8 @@ class Detail extends Component {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
-
           </div>
           <div className="card-footer text-muted">
             <div className="row">
@@ -357,7 +361,6 @@ class Detail extends Component {
                   PokeAPI.co
                 </a>
               </div>
-
               <div className="col-md-6">
                 <button
                   type="button"
@@ -370,13 +373,13 @@ class Detail extends Component {
                 </button>
               </div>
             </div>
-
           </div>
         </div> : <EmptyData type="error" message="This pokemon is not discovered yet.."></EmptyData>}
       </div>
     );
   }
 }
+
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = { get: getPokemon,catchPokemon,
   releasePokemon };

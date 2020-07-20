@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { getPokemons, catchPokemon,releasePokemon } from '../../Redux/actions';
-import Card from './Cards';
-import Paginate from './Paginate';
+import Card from '../Cards';
+import Paginate from '../Paginate';
 import EmptyData from '../EmptyData';
 class List extends Component {
   constructor(props) {
@@ -15,17 +14,20 @@ class List extends Component {
       searchedPokemonsPage: 1 
       };
   }
+
   componentDidMount() {
     const { get } = this.props;
     const { page } = this.state;
 
     get(page);
   }
+
   handlePageClick = (data) => {
     const {location} = this.props;
     let type = location.search !=="" ? 'search' :
     location.pathname ==='/' ? 'pokemons' : 'pokedex';
     const { get } = this.props;
+
     if(type ==='search'){
       this.setState({
         searchedPokemonsPage: data.selected + 1,
@@ -40,16 +42,19 @@ class List extends Component {
         pokedexPage: data.selected + 1,
       });
     }
+
   };
 
   catch = (pokemon) => (e) => {
     const { catchPokemon } = this.props;
     catchPokemon(pokemon);
   };
+
   release = (name)=>(e)=>{
     const {releasePokemon} = this.props;
     releasePokemon(name);
   }
+
   render() {
     const {
       location,
@@ -80,12 +85,13 @@ class List extends Component {
       
       totalCount = searchedTotal;
       currentPage = searchedPokemonsPage;
+
       if(type==='pokedex'){
         message = "You didn't catch this pokemon yet!"
       }else{
         message = "Did you try discover a new pokemon?"
-
       }
+
     }else{
       if (type === 'pokemons') {
         message = "We cant find any pokemon"
@@ -120,6 +126,7 @@ class List extends Component {
 
       }
     }
+    
     let paginate = <div className='react-paginate w-100'><Paginate
     limit={limit}
     total={totalCount}

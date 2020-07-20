@@ -11,11 +11,11 @@ export default class Cards extends Component {
       tooManyRequests: false,
     };
   }
-
   render() {
     const {
       name, url, catched, release,
     } = this.props;
+
     const index = url.split('/')[url.split('/').length - 2];
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
     const { imageLoading, tooManyRequests } = this.state;

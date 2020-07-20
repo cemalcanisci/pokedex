@@ -25,8 +25,8 @@ export default function App() {
               <List />
             </Route>
             <Route exact path="/">
-              <List />
-            </Route>
+            <List />
+          </Route>
             <Route exact>
               <EmptyData type="404" message="404 not found" />
             </Route>

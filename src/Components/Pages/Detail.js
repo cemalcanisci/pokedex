@@ -17,7 +17,14 @@ class Detail extends Component {
   }
   catch = (pokemon) => (e) => {
     const { catchPokemon } = this.props;
-    catchPokemon(pokemon);
+    const {  match } = this.props;
+    const { params } = match;
+    const { pokeId } = params;
+    const newPokeObject = {
+      name:pokemon.name,
+      url:`https://pokeapi.co/api/v2/pokemon/${pokeId}/`
+    }
+    catchPokemon(newPokeObject);
   };
   release = (name)=>(e)=>{
     const {releasePokemon} = this.props;

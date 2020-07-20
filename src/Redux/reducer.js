@@ -46,8 +46,12 @@ export default function pokemonsReducer(state = initialState, action) {
     {
       const pokemons = [...state.pokemons];
       const pokedex = [...state.pokedex];
+      const pokemon = state.pokemon;
       const newPokemon = action.payload;
       newPokemon.catched = true;
+      if(pokemon.name===newPokemon.name){
+        pokemon.catched=true;
+      }
       pokemons.forEach((poke) => {
         if (poke.name === newPokemon.name) { poke.catched = true; }
       });
@@ -65,6 +69,7 @@ export default function pokemonsReducer(state = initialState, action) {
         ...state,
         pokedex: [...pokedex],
         pokedexTotal: pokedex.length,
+        pokemon
       }; }
     case 'GET_SEARCHED_POKEMONS':
     {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getPokemons, catchPokemon,releasePokemon } from '../../Redux/actions';
-import Card from '../Cards';
-import Paginate from '../Paginate';
-import EmptyData from '../EmptyData';
+import { getPokemons, catchPokemon,releasePokemon } from '../Redux/actions';
+import Card from '../Components/Cards';
+import Paginate from '../Components/Paginate';
+import EmptyData from '../Components/EmptyData';
 class List extends Component {
   constructor(props) {
     super(props);

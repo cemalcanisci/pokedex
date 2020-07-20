@@ -1,15 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../Assets/App.scss';
+import './Assets/App.scss';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
 import List from './Pages/List';
-import Header from './Header';
+import Header from './Components/Header';
 import Detail from './Pages/Detail';
-import EmptyData from './EmptyData';
+import EmptyData from './Components/EmptyData';
 
 export default function App() {
   return (

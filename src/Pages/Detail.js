@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getPokemon,catchPokemon,releasePokemon } from '../../Redux/actions';
-import EmptyData from '../EmptyData';
+import { getPokemon,catchPokemon,releasePokemon } from '../Redux/actions';
+import EmptyData from '../Components/EmptyData';
 
 class Detail extends Component {
   componentDidMount() {

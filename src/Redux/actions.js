@@ -24,7 +24,7 @@ export const getPokemon = (pokemonId) => async (dispatch) => {
 };
 export const getSearchedPokemons = (type, key) => async (dispatch) => {
   if (key === '') {
-    dispatch({ type: 'GET_NULL', payload: 'Please write name which pokemon you want search!!' });
+    dispatch({ type: 'GET_ERROR', payload: 'Please write name which pokemon you want search!!' });
   } else if (type === 'pokemons') {
     try {
       const pokemons = await axios.get(

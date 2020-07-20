@@ -9,11 +9,12 @@ import { getSearchedPokemons } from '../Redux/actions';
 function Header({ props, dispatch }) {
   const location = useLocation();
   let textInput = null;
+  const url = location.pathname.startsWith('/pokemon') ? '/' : location.pathname === '/pokedex' ? 'pokedex' : '/';
+
   const search = () => (e) => {
     const type = location.pathname.startsWith('/pokemon') ? 'pokemons' : location.pathname === '/pokedex' ? 'pokedex' : 'pokemons';
     const searchString = textInput.value.replace(/\s/g, '');
     dispatch(getSearchedPokemons(type, searchString));
-  
     textInput.value = '';
   };
   const keyPressHandler = (e) => {
@@ -58,7 +59,7 @@ function Header({ props, dispatch }) {
               onClick={search()}
               exact
               className="btn btn-danger outline-light btn-sm"
-              to="?search"
+              to={url + '?search'}
             >
 
               Search
